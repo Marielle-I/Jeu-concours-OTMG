@@ -59,7 +59,9 @@ const QUESTIONS = [
     text: "En 1835, combien d'habitations-sucreries comptait Marie-Galante, à l'époque où la culture de la canne à sucre dominait l'économie de l'île ?",
     options: ["15 habitations-sucreries", "39 habitations-sucreries", "81 habitations-sucreries", "106 habitations-sucreries"],
     correct: [3],
-    explanation: "Marie-Galante était surnommée l'île aux cent moulins. En 1835, on comptait 106 habitations-sucreries."
+    explanation: "Marie-Galante était surnommée l'île aux cent moulins. En 1835, on comptait 106 habitations-sucreries."?
+    hasPhoto: true,
+    image: "/Habitation Murat.jpg"
   },
   {
     id: 2, theme: "PATRIMOINE ET HABITATION", type: "single", points: 1,
@@ -71,35 +73,45 @@ const QUESTIONS = [
       "Elle est aujourd'hui une usine sucrière industrielle."
     ],
     correct: [0],
-    explanation: "L'Habitation Murat abrite l'Écomusée de Marie-Galante, qui valorise l'histoire, les arts et les traditions populaires de l'île."
+    explanation: "L'Habitation Murat abrite l'Écomusée de Marie-Galante, qui valorise l'histoire, les arts et les traditions populaires de l'île.",
+    hasPhoto: true,
+    image: "/Habitation Murat 2.jpg"
   },
   {
     id: 3, theme: "PATRIMOINE ET HABITATION", type: "multiple", points: 2,
     text: "Quels éléments du patrimoine peut-on découvrir sur le site de l'Habitation Roussel-Trianon ? (Plusieurs réponses possibles)",
     options: ["Un moulin à vent", "Une cheminée de l'ancienne sucrerie", "Des écuries en pierre et en brique", "Un ancien fort militaire avec des canons"],
     correct: [0, 1, 2],
-    explanation: "Roussel-Trianon est une ancienne habitation sucrière dont les vestiges témoignent de la production de sucre de canne. Son moulin à vent, sa cheminée et ses écuries comptent parmi les éléments remarquables de son patrimoine architectural."
+    explanation: "Roussel-Trianon est une ancienne habitation sucrière dont les vestiges témoignent de la production de sucre de canne. Son moulin à vent, sa cheminée et ses écuries comptent parmi les éléments remarquables de son patrimoine architectural.",
+    hasPhoto: true,
+    image: "/Habitation Roussel Trianon.jpg"
   },
   {
     id: 4, theme: "FESTIVALS ET CULTURE", type: "single", points: 1,
     text: "En quelle année a eu lieu la première édition du festival devenu Terre de Blues, et sur quel site se déroule-t-il depuis ses premières éditions ?",
     options: ["En 2000, à l'Habitation Murat", "En 2005, à la distillerie Bielle", "En 1990, à l'Habitation Roussel-Trianon", "En 2010, sur la plage de Folle-Anse"],
     correct: [0],
-    explanation: "La première édition a eu lieu en 2000 sous le nom « Créole Blues ». Le festival est associé au site de l'Habitation Murat."
+    explanation: "La première édition a eu lieu en 2000 sous le nom « Créole Blues ». Le festival est associé au site de l'Habitation Murat.",
+    hasPhoto: true,
+    image: "/Festival Terre de Blues.jpg"
   },
   {
     id: 5, theme: "FESTIVALS ET CULTURE", type: "single", points: 1,
     text: "À quelle période de l'année se déroule généralement le festival Terre de Blues à Marie-Galante ?",
     options: ["Pendant le Carnaval, en février ou en mars", "Pendant le week-end de la Pentecôte, généralement en mai ou en juin", "Pendant les vacances de Noël, en décembre", "Au moment des grandes vacances, en juillet ou en août"],
     correct: [1],
-    explanation: "Le festival se déroule généralement pendant le week-end de la Pentecôte."
+    explanation: "Le festival se déroule généralement pendant le week-end de la Pentecôte.",
+    hasPhoto: true,
+    image: "/Festival Terre de Blues 2.jpg"
   },
   {
     id: 6, theme: "PRODUITS DU TERROIR ET SAVOIR-FAIRE", type: "single", points: 1,
     text: "De quoi est fabriqué le sirop de batterie traditionnel de Marie-Galante ?",
     options: ["De pur jus de canne à sucre concentré par cuisson", "De mélasse mélangée à de l'eau de mer", "De jus de manioc fermenté", "De rhum blanc mélangé à du sucre"],
     correct: [0],
-    explanation: "Le jus de canne est cuit et concentré pour obtenir ce sirop traditionnel."
+    explanation: "Le jus de canne est cuit et concentré pour obtenir ce sirop traditionnel.",
+    hasPhoto: true,
+    image: "/Sirop de batterie.jpg"
   },
   {
     id: 7, theme: "TRADITIONS AGRICOLES", type: "multiple", points: 2,
@@ -111,7 +123,9 @@ const QUESTIONS = [
       "C'est une machine motorisée destinée à broyer la canne à sucre dans les champs."
     ],
     correct: [0, 1, 2],
-    explanation: "Le cabrouet est une charrette à traction bovine historiquement utilisée pour transporter la canne à sucre. Il demeure un symbole du patrimoine agricole de Marie-Galante et joue un rôle dans les courses de bœufs tirants."
+    explanation: "Le cabrouet est une charrette à traction bovine historiquement utilisée pour transporter la canne à sucre. Il demeure un symbole du patrimoine agricole de Marie-Galante et joue un rôle dans les courses de bœufs tirants.",
+    hasPhoto: true,
+    image: "Charrette traditionnelle.jpg"
   },
   {
     id: 8, theme: "TRADITIONS AGRICOLES", type: "single", points: 1,
@@ -123,14 +137,18 @@ const QUESTIONS = [
       "Des bovins traversent un bassin en nageant."
     ],
     correct: [0],
-    explanation: "Cette épreuve met à l'honneur la force des animaux, leur entraînement et le savoir-faire des meneurs."
+    explanation: "Cette épreuve met à l'honneur la force des animaux, leur entraînement et le savoir-faire des meneurs.",
+    hasPhoto: true,
+    image: "/Bœufs tirants.jpg"
   },
   {
     id: 9, theme: "DISTILLERIES ET RHUM", type: "multiple", points: 2,
     text: "Quelles sont les trois distilleries traditionnellement recensées en activité à Marie-Galante ? (Plusieurs réponses possibles)",
     options: ["Bellevue", "Bielle", "Poisson, qui produit le rhum Père Labat", "Damoiseau"],
     correct: [0, 1, 2],
-    explanation: "Les trois distilleries traditionnellement recensées sont Bellevue, Bielle et Poisson. Damoiseau est située au Moule, en Grande-Terre."
+    explanation: "Les trois distilleries traditionnellement recensées sont Bellevue, Bielle et Poisson. Damoiseau est située au Moule, en Grande-Terre.",
+    hasPhoto: true,
+    image: "/Distillerie.jpg"
   },
   {
     id: 10, theme: "DISTILLERIES ET RHUM", type: "multiple", points: 2,
@@ -142,7 +160,9 @@ const QUESTIONS = [
       "Le rhum agricole est exclusivement fabriqué à partir de mélasse importée."
     ],
     correct: [0, 1, 2],
-    explanation: "Le rhum agricole de Marie-Galante est produit à partir du jus de canne à sucre. L'île est réputée pour son rhum blanc à 59° et ses trois distilleries traditionnelles. Le rhum élaboré à partir de mélasse relève d'un autre procédé."
+    explanation: "Le rhum agricole de Marie-Galante est produit à partir du jus de canne à sucre. L'île est réputée pour son rhum blanc à 59° et ses trois distilleries traditionnelles. Le rhum élaboré à partir de mélasse relève d'un autre procédé.",
+    hasPhoto: true,
+    image: "/Coupe de la canne à sucre.jpg"
   },
   {
     id: 11, theme: "GASTRONOMIE LOCALE", type: "single", points: 1,
@@ -168,14 +188,18 @@ const QUESTIONS = [
       "Un four traditionnel destiné à cuire les viandes"
     ],
     correct: [0],
-    explanation: "La platine est une plaque métallique chaude sur laquelle on cuit la galette de manioc après en avoir extrait le jus toxique."
+    explanation: "La platine est une plaque métallique chaude sur laquelle on cuit la galette de manioc après en avoir extrait le jus toxique.",
+    hasPhoto: true,
+    image: "/kassav.jpg"
   },
   {
     id: 14, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
     text: "Combien d'espèces de tortues marines fréquentent les eaux de la Guadeloupe ?",
     options: ["3 espèces", "4 espèces", "5 espèces", "6 espèces"],
     correct: [2],
-    explanation: "Cinq espèces de tortues marines sont recensées : la tortue luth, verte, imbriquée, caouanne et olivâtre. Trois viennent régulièrement pondre sur les plages."
+    explanation: "Cinq espèces de tortues marines sont recensées : la tortue luth, verte, imbriquée, caouanne et olivâtre. Trois viennent régulièrement pondre sur les plages.",
+    hasPhoto: true,
+    image: "/Tortue.jpg"
   },
   {
     id: 15, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
@@ -187,10 +211,12 @@ const QUESTIONS = [
       "Le palétuvier blanc (Laguncularia racemosa)"
     ],
     correct: [0],
-    explanation: "Le palétuvier rouge est reconnaissable à ses racines aériennes en forme d'échasses, qui lui permettent de s'ancrer dans les sols vaseux."
+    explanation: "Le palétuvier rouge est reconnaissable à ses racines aériennes en forme d'échasses, qui lui permettent de s'ancrer dans les sols vaseux.",
+    hasPhoto: true,
+    image: "/Palétuvier rouge.jpg"
   },
   {
-    id: 16, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "photo", points: 2,
+    id: 16, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 2,
     text: "Quel est le nom de cette espèce ?",
     imagePlaceholder: "Un lézard vert émeraude aux nuances bleutées sur le tronc d'un arbre.",
     options: [
@@ -200,7 +226,9 @@ const QUESTIONS = [
       "Anolis de la Sagra (Norops sagrei)"
     ],
     correct: [2],
-    explanation: "Il s'agit de l'Anolis ferreus, une espèce endémique magnifique de Marie-Galante."
+    explanation: "Il s'agit de l'Anolis ferreus, une espèce endémique magnifique de Marie-Galante.",
+    hasPhoto: true,
+    image: "/anolis ferreus.jpg"
   },
   {
     id: 17, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
@@ -212,22 +240,28 @@ const QUESTIONS = [
       "Comme une espèce de palétuvier naturellement présente"
     ],
     correct: [2],
-    explanation: "Le projet mentionne le cocotier parmi les espèces exotiques envahissantes présentes sur le site étudié."
+    explanation: "Le projet mentionne le cocotier parmi les espèces exotiques envahissantes présentes sur le site étudié.",
+    hasPhoto: true,
+    image: "/cocotier.jpg"
   },
   {
-    id: 18, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "photo", points: 2,
+    id: 18, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 2,
     text: "Où se trouve cette mangrove à Marie-Galante ?",
     imagePlaceholder: "Une mangrove paisible avec une promenade en bois traversant l'eau et une petite barque.",
     options: ["Au marais de Vieux-Fort", "Au marais de Folle-Anse", "Au marais de Petite-Anse", "Au marais de Port-Louis"],
-    correct: [0],
-    explanation: "Il s'agit du marais de Vieux-Fort."
+    correct: [1],
+    explanation: "Il s'agit du marais de Vieux-Fort.",
+    hasPhoto: true,
+    image: "/Marais de Vieux-Fort.jpg"
   },
   {
     id: 19, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
     text: "Quelle association locale œuvre activement depuis l'an 2000 pour la protection des tortues marines et la surveillance des pontes à Marie-Galante ?",
     options: ["L'association Écolambda", "Le Conservatoire du littoral", "L'Office français de la biodiversité", "L'association Corail"],
     correct: [0],
-    explanation: "Écolambda participe activement à la protection des tortues marines à Marie-Galante, notamment par la surveillance des pontes."
+    explanation: "Écolambda participe activement à la protection des tortues marines à Marie-Galante, notamment par la surveillance des pontes.",
+    hasPhoto: true,
+    image: "/Protection des tortues marines.jpg"
   },
   {
     id: 20, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "multiple", points: 2,
@@ -239,15 +273,19 @@ const QUESTIONS = [
       "Elles peuvent retenir une partie des eaux pluviales et limiter les inondations."
     ],
     correct: [0, 1, 3],
-    explanation: "Les mares constituent des habitats pour la biodiversité, fournissent de l'eau pour l'agriculture et participent à la régulation des eaux pluviales."
+    explanation: "Les mares constituent des habitats pour la biodiversité, fournissent de l'eau pour l'agriculture et participent à la régulation des eaux pluviales.",
+    hasPhoto: true,
+    image: "/Mare.jpg"
   },
   {
-    id: 21, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "photo", points: 2,
+    id: 21, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 2,
     text: "De quelle plage s'agit-il ?",
     imagePlaceholder: "Une immense plage de sable blanc fin, bordée d'eaux turquoise calmes, typique des Caraïbes.",
     options: ["Trois-Îlets", "Moustique", "Anse Canot", "Anse de Mays"],
     correct: [3],
-    explanation: "Il s'agit de la magnifique plage de l'Anse de Mays."
+    explanation: "Il s'agit de la magnifique plage de l'Anse de Mays.",
+    hasPhoto: true,
+    image: "/Anse de Mays.jpg"
   }
 ];
 
@@ -281,7 +319,7 @@ const Confetti = () => {
 export default function App() {
   const [user, setUser] = useState(null);
   const [step, setStep] = useState('registration'); // registration, quiz, bonus, result
-  const [participant, setParticipant] = useState({ firstName: '', lastName: '', email: '' });
+  const [participant, setParticipant] = useState({ firstName: '', lastName: '', email: '', phone:'' });
   
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -297,6 +335,31 @@ export default function App() {
   const [participantsList, setParticipantsList] = useState([]);
   const [filterLevel, setFilterLevel] = useState('all');
   const [sortOrder, setSortOrder] = useState('desc'); // 'desc' ou 'asc'
+  const handleExportCSV = () => {
+    const headers = ["Nom", "Prénom", "Email", "Téléphone", "Score", "Bonus 1", "Bonus 2", "Bonus 3"];
+    
+    const rows = participantsList.map(p => [
+      p.lastName, 
+      p.firstName, 
+      p.email, 
+      p.phone || "Non renseigné", 
+      p.score, 
+      p.bonusData?.b1 || "", 
+      p.bonusData?.b2 || "", 
+      p.bonusData?.b3 || ""
+    ]);
+    
+    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" 
+      + [headers.join(";"), ...rows.map(e => e.join(";"))].join("\n");
+      
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Resultats_Passeport_Marie_Galante.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // --- Auth Effect ---
   useEffect(() => {
@@ -468,7 +531,7 @@ export default function App() {
     });
 
   // --- Views ---
-  const renderRegistration = () => (
+  const renderRegistration = () => {
     <div className="max-w-md mx-auto bg-white/95 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-2xl border-t-4 border-emerald-500 relative animate-fade-in">
       <div className="text-center mb-10">
         <Map className="w-20 h-20 mx-auto text-emerald-600 mb-6 animate-float" />
@@ -491,6 +554,15 @@ export default function App() {
           <input required type="email" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 outline-none transition-all text-lg"
             value={participant.email} onChange={e => setParticipant({...participant, email: e.target.value})} />
         </div>
+        <div>
+  <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Téléphone (facultatif)</label>
+  <input 
+    type="tel" 
+    className="w-full p-4 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all outline-none"
+    value={participant.phone} 
+    onChange={e => setParticipant({...participant, phone: e.target.value})} 
+  />
+</div>
         <button type="submit" className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3 mt-8 text-lg">
           Commencer le Quiz <ChevronRight size={24} />
         </button>
@@ -504,7 +576,7 @@ export default function App() {
         <Lock size={18} />
       </button>
     </div>
-  );
+  };
 
   const renderAdminLogin = () => (
     <div className="max-w-md mx-auto bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-xl border-t-4 border-slate-800">
@@ -536,97 +608,54 @@ export default function App() {
     </div>
   );
 
-  const renderAdminDashboard = () => (
-    <div className="max-w-6xl mx-auto bg-white/95 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border-t-4 border-cyan-600">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div>
-          <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-            <Users className="text-cyan-600" /> Tableau de Bord - Participants
+  const renderAdminDashboard = () => {
+    return (
+      <div className="animate-fade-in max-h-[80vh] overflow-y-auto w-full max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-xl relative z-10">
+        <div className="flex justify-between items-center mb-6 border-b pb-4">
+          <h2 className="text-2xl font-bold text-emerald-900 flex items-center">
+            <Users className="mr-2" /> Participants ({participantsList.length})
           </h2>
-          <p className="text-slate-600">{participantsList.length} participant(s) enregistré(s)</p>
+          <div className="flex gap-2">
+            <button onClick={handleExportCSV} className="text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded font-bold flex items-center shadow transition-colors">
+              <Download className="w-4 h-4 mr-2" /> Exporter CSV
+            </button>
+            <button onClick={() => setStep('registration')} className="text-sm bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded text-slate-800 font-bold transition-colors">
+              Quitter
+            </button>
+          </div>
         </div>
-        <div className="flex gap-3">
-          <button onClick={() => setStep('registration')} className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition-colors">
-            Quitter
-          </button>
-          <button onClick={exportToCSV} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2">
-            <Download size={18} /> Exporter CSV
-          </button>
+        
+        <div className="space-y-3">
+          {participantsList.length === 0 ? (
+            <p className="text-slate-500 text-center py-8 text-lg">Aucun participant enregistré pour le moment.</p>
+          ) : null}
+          
+          {/* Tri automatique par score décroissant */}
+          {[...participantsList].sort((a,b) => b.score - a.score).map((p, idx) => (
+            <div key={idx} className="p-4 bg-slate-50 border border-slate-200 rounded-lg flex flex-col md:flex-row justify-between md:items-center gap-4 hover:shadow-md transition-shadow">
+              <div>
+                <p className="font-bold text-lg text-slate-800">{p.lastName?.toUpperCase()} {p.firstName}</p>
+                <p className="text-sm text-slate-600">
+                  {p.email} {p.phone ? `• Tél: ${p.phone}` : ''}
+                </p>
+                
+                {/* Affichage des réponses bonus pour le tirage */}
+                <div className="mt-2 text-xs text-slate-500 bg-white p-2 rounded border">
+                  <span className="font-semibold text-emerald-800">Bonus 1:</span> {p.bonusData?.b1 || "-"} | 
+                  <span className="font-semibold text-emerald-800 ml-2">Bonus 2:</span> {p.bonusData?.b2 || "-"} | 
+                  <span className="font-semibold text-emerald-800 ml-2">Bonus 3:</span> {p.bonusData?.b3 || "-"}
+                </div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <p className="font-black text-2xl text-emerald-600">{p.score} <span className="text-sm text-slate-500 font-normal">pts</span></p>
+                {idx === 0 && <span className="text-xs font-bold text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full uppercase">1er Actuel</span>}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <div className="flex flex-col md:flex-row gap-4 mb-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
-        <div className="flex-1">
-          <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Filtrer par niveau</label>
-          <select 
-            className="w-full p-2 border border-slate-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-cyan-500"
-            value={filterLevel}
-            onChange={e => setFilterLevel(e.target.value)}
-          >
-            <option value="all">Tous les niveaux</option>
-            <option value="Passeport Découverte">Passeport Découverte (0-6)</option>
-            <option value="Explorateur">Explorateur (7-13)</option>
-            <option value="Connaisseur">Connaisseur (14-19)</option>
-            <option value="Ambassadeur">Ambassadeur (20-24)</option>
-            <option value="Expert de Marie-Galante">Expert (25-29)</option>
-          </select>
-        </div>
-        <div className="flex-1">
-          <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Trier par score</label>
-          <button 
-            onClick={() => setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc')}
-            className="w-full flex items-center justify-between p-2 border border-slate-300 rounded-lg bg-white hover:bg-slate-50 transition-colors"
-          >
-            <span>{sortOrder === 'desc' ? 'Du plus grand au plus petit' : 'Du plus petit au plus grand'}</span>
-            <ArrowUpDown size={16} className="text-slate-400" />
-          </button>
-        </div>
-      </div>
-
-      <div className="overflow-x-auto bg-white rounded-xl border border-slate-200">
-        <table className="w-full text-left text-sm whitespace-nowrap">
-          <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
-            <tr>
-              <th className="p-4 font-semibold">Participant</th>
-              <th className="p-4 font-semibold">Contact</th>
-              <th className="p-4 font-semibold text-center">Score</th>
-              <th className="p-4 font-semibold">Niveau</th>
-              <th className="p-4 font-semibold text-amber-600">Q. Bonus</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100">
-            {filteredAndSortedParticipants.length === 0 ? (
-              <tr>
-                <td colSpan="5" className="p-8 text-center text-slate-500 italic">Aucun participant trouvé.</td>
-              </tr>
-            ) : (
-              filteredAndSortedParticipants.map(p => (
-                <tr key={p.id} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="p-4 font-medium text-slate-800">{p.lastName} {p.firstName}</td>
-                  <td className="p-4 text-slate-600">{p.email}</td>
-                  <td className="p-4 text-center">
-                    <span className="inline-flex items-center justify-center bg-cyan-100 text-cyan-800 font-bold w-8 h-8 rounded-full">
-                      {p.score}
-                    </span>
-                  </td>
-                  <td className="p-4">
-                    <span className="px-2 py-1 bg-emerald-50 text-emerald-700 rounded-md text-xs font-semibold">
-                      {p.rank}
-                    </span>
-                  </td>
-                  <td className="p-4 text-xs text-slate-500 space-y-1">
-                    <p><strong className="text-amber-700">1.</strong> {p.bonusAnswers?.b1 || '-'}</p>
-                    <p><strong className="text-amber-700">2.</strong> {p.bonusAnswers?.b2 || '-'}</p>
-                    <p><strong className="text-amber-700">3.</strong> {p.bonusAnswers?.b3 || '-'}</p>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+    );
+  };
 
   const renderQuiz = () => {
     const q = QUESTIONS[currentQuestionIndex];
@@ -657,12 +686,22 @@ export default function App() {
         
         {isMultiple && <p className="text-sm text-amber-600 font-bold mb-5 flex items-center gap-1 bg-amber-50 inline-block px-3 py-1 rounded-lg"><Sparkles size={16}/> Plusieurs réponses possibles</p>}
 
-        {q.imagePlaceholder && (
-          <div className="w-full h-56 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl mb-6 flex flex-col items-center justify-center text-slate-500 border-2 border-dashed border-slate-300 shadow-sm transition-transform hover:scale-[1.01]">
-            <Camera size={40} className="mb-3 text-slate-400 animate-pulse" />
-            <p className="text-sm px-4 text-center font-medium">{q.imagePlaceholder}</p>
-          </div>
-        )}
+        {q.hasPhoto && (
+  <div className="w-full h-48 bg-slate-100 rounded-xl mb-6 overflow-hidden border-2 border-slate-200 flex items-center justify-center shadow-inner">
+    {q.image ? (
+      <img 
+        src={q.image} 
+        alt="Illustration de la question" 
+        className="w-full h-full object-cover" 
+      />
+    ) : (
+      <div className="text-slate-400 flex flex-col items-center">
+        <Camera className="w-8 h-8 mb-2" />
+        <span className="text-sm">Photo introuvable</span>
+      </div>
+    )}
+  </div>
+)}
 
         <div className="space-y-3">
           {q.options.map((opt, idx) => {
