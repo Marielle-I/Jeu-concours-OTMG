@@ -442,9 +442,9 @@ export default function App() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          service_id: "service_ddchv9z",
-          template_id: "template_nxhi40f",
-          user_id: "neuO8Aex4xZ8rLoXg",
+          service_id: "service_jr3mo2h",
+          template_id: "template_vdmd3gq",
+          user_id: "Nu6E0iGxnedXzcifq",
           template_params: {
             to_email: participant.email,         // L'e-mail du joueur
             to_name: participant.firstName,      // Le prénom du joueur
