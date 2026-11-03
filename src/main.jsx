@@ -59,23 +59,18 @@ const QUESTIONS = [
     text: "En 1835, combien d'habitations-sucreries comptait Marie-Galante, à l'époque où la culture de la canne à sucre dominait l'économie de l'île ?",
     options: ["15 habitations-sucreries", "39 habitations-sucreries", "81 habitations-sucreries", "106 habitations-sucreries"],
     correct: [3],
-    explanation: "Marie-Galante était surnommée l'île aux cent moulins. En 1835, on comptait 106 habitations-sucreries."?
+    explanation: "Marie-Galante était surnommée l'île aux cent moulins. En 1835, on comptait 106 habitations-sucreries.",
     hasPhoto: true,
-    image: "/Habitation Murat.jpg"
+    image: "/habitationmurat.jpg"
   },
   {
     id: 2, theme: "PATRIMOINE ET HABITATION", type: "single", points: 1,
     text: "Quelle est la particularité de l'Habitation Murat aujourd'hui ?",
-    options: [
-      "Elle abrite l'Écomusée des arts et traditions populaires de Marie-Galante.",
-      "Elle est devenue une distillerie de rhum en activité.",
-      "Elle accueille le principal port de commerce de l'île.",
-      "Elle est aujourd'hui une usine sucrière industrielle."
-    ],
+    options: ["Elle abrite l'Écomusée des arts et traditions populaires de Marie-Galante.", "Elle est devenue une distillerie de rhum en activité.", "Elle accueille le principal port de commerce de l'île.", "Elle est aujourd'hui une usine sucrière industrielle."],
     correct: [0],
     explanation: "L'Habitation Murat abrite l'Écomusée de Marie-Galante, qui valorise l'histoire, les arts et les traditions populaires de l'île.",
     hasPhoto: true,
-    image: "/Habitation Murat 2.jpg"
+    image: "/habitationmurat2.jpg"
   },
   {
     id: 3, theme: "PATRIMOINE ET HABITATION", type: "multiple", points: 2,
@@ -84,7 +79,7 @@ const QUESTIONS = [
     correct: [0, 1, 2],
     explanation: "Roussel-Trianon est une ancienne habitation sucrière dont les vestiges témoignent de la production de sucre de canne. Son moulin à vent, sa cheminée et ses écuries comptent parmi les éléments remarquables de son patrimoine architectural.",
     hasPhoto: true,
-    image: "/Habitation Roussel Trianon.jpg"
+    image: "/habitationroussel.jpg"
   },
   {
     id: 4, theme: "FESTIVALS ET CULTURE", type: "single", points: 1,
@@ -93,7 +88,7 @@ const QUESTIONS = [
     correct: [0],
     explanation: "La première édition a eu lieu en 2000 sous le nom « Créole Blues ». Le festival est associé au site de l'Habitation Murat.",
     hasPhoto: true,
-    image: "/Festival Terre de Blues.jpg"
+    image: "/festivalTDB.jpg"
   },
   {
     id: 5, theme: "FESTIVALS ET CULTURE", type: "single", points: 1,
@@ -102,7 +97,7 @@ const QUESTIONS = [
     correct: [1],
     explanation: "Le festival se déroule généralement pendant le week-end de la Pentecôte.",
     hasPhoto: true,
-    image: "/Festival Terre de Blues 2.jpg"
+    image: "/festivalTDB2.jpg"
   },
   {
     id: 6, theme: "PRODUITS DU TERROIR ET SAVOIR-FAIRE", type: "single", points: 1,
@@ -110,36 +105,25 @@ const QUESTIONS = [
     options: ["De pur jus de canne à sucre concentré par cuisson", "De mélasse mélangée à de l'eau de mer", "De jus de manioc fermenté", "De rhum blanc mélangé à du sucre"],
     correct: [0],
     explanation: "Le jus de canne est cuit et concentré pour obtenir ce sirop traditionnel.",
-    hasPhoto: true,
-    image: "/Sirop de batterie.jpg"
+    explanationImage: "/siropbatterie.jpg"
   },
   {
     id: 7, theme: "TRADITIONS AGRICOLES", type: "multiple", points: 2,
     text: "Quelles affirmations décrivent correctement le cabrouet traditionnel de Marie-Galante ? (Plusieurs réponses possibles)",
-    options: [
-      "C'est une charrette traditionnelle tirée par une paire de bœufs.",
-      "Il servait à transporter la canne à sucre des champs vers les moulins et les distilleries.",
-      "Il est utilisé lors des compétitions traditionnelles de bœufs tirants.",
-      "C'est une machine motorisée destinée à broyer la canne à sucre dans les champs."
-    ],
+    options: ["C'est une charrette traditionnelle tirée par une paire de bœufs.", "Il servait à transporter la canne à sucre des champs vers les moulins et les distilleries.", "Il est utilisé lors des compétitions traditionnelles de bœufs tirants.", "C'est une machine motorisée destinée à broyer la canne à sucre dans les champs."],
     correct: [0, 1, 2],
     explanation: "Le cabrouet est une charrette à traction bovine historiquement utilisée pour transporter la canne à sucre. Il demeure un symbole du patrimoine agricole de Marie-Galante et joue un rôle dans les courses de bœufs tirants.",
     hasPhoto: true,
-    image: "Charrette traditionnelle.jpg"
+    image: "/charrette traditionnelle.jpg"
   },
   {
     id: 8, theme: "TRADITIONS AGRICOLES", type: "single", points: 1,
     text: "En quoi consiste une compétition de bœufs tirants à Marie-Galante ?",
-    options: [
-      "Deux bœufs tirent une charrette chargée sur une côte, sur un parcours chronométré.",
-      "Un cheval tire une charrette vide sur un parcours plat.",
-      "Des bœufs labourent un champ sans charge ni parcours chronométré.",
-      "Des bovins traversent un bassin en nageant."
-    ],
+    options: ["Deux bœufs tirent une charrette chargée sur une côte, sur un parcours chronométré.", "Un cheval tire une charrette vide sur un parcours plat.", "Des bœufs labourent un champ sans charge ni parcours chronométré.", "Des bovins traversent un bassin en nageant."],
     correct: [0],
     explanation: "Cette épreuve met à l'honneur la force des animaux, leur entraînement et le savoir-faire des meneurs.",
     hasPhoto: true,
-    image: "/Bœufs tirants.jpg"
+    image: "/Boeufstirants.jpg"
   },
   {
     id: 9, theme: "DISTILLERIES ET RHUM", type: "multiple", points: 2,
@@ -148,45 +132,37 @@ const QUESTIONS = [
     correct: [0, 1, 2],
     explanation: "Les trois distilleries traditionnellement recensées sont Bellevue, Bielle et Poisson. Damoiseau est située au Moule, en Grande-Terre.",
     hasPhoto: true,
-    image: "/Distillerie.jpg"
+    image: "/distillerie.jpg"
   },
   {
     id: 10, theme: "DISTILLERIES ET RHUM", type: "multiple", points: 2,
     text: "Quelles affirmations décrivent correctement le rhum de Marie-Galante ? (Plusieurs réponses possibles)",
-    options: [
-      "Le rhum agricole est élaboré à partir du jus de canne à sucre frais.",
-      "Le rhum blanc à 59° est une particularité emblématique de Marie-Galante.",
-      "L'île compte trois distilleries traditionnelles: Bellevue, Bielle et Poisson.",
-      "Le rhum agricole est exclusivement fabriqué à partir de mélasse importée."
-    ],
+    options: ["Le rhum agricole est élaboré à partir du jus de canne à sucre frais.", "Le rhum blanc à 59° est une particularité emblématique de Marie-Galante.", "L'île compte trois distilleries traditionnelles: Bellevue, Bielle et Poisson.", "Le rhum agricole est exclusivement fabriqué à partir de mélasse importée."],
     correct: [0, 1, 2],
     explanation: "Le rhum agricole de Marie-Galante est produit à partir du jus de canne à sucre. L'île est réputée pour son rhum blanc à 59° et ses trois distilleries traditionnelles. Le rhum élaboré à partir de mélasse relève d'un autre procédé.",
     hasPhoto: true,
-    image: "/Coupe de la canne à sucre.jpg"
+    image: "/coupeurdecanne.jpg"
   },
   {
     id: 11, theme: "GASTRONOMIE LOCALE", type: "single", points: 1,
     text: "Quelle pâtisserie emblématique de Marie-Galante est préparée notamment avec du sirop de batterie et peut être parfumée à la noix de coco ?",
     options: ["Le caca bœuf", "Le tourment d'amour", "La kassav", "Le bébélé"],
     correct: [0],
-    explanation: "Le caca bœuf est une pâtisserie traditionnelle à base de sirop de batterie, souvent garnie de noix de coco."
+    explanation: "Le caca bœuf est une pâtisserie traditionnelle à base de sirop de batterie, souvent garnie de noix de coco.",
+    explanationImage: "/cacaboeuf.jpg"
   },
   {
     id: 12, theme: "GASTRONOMIE LOCALE", type: "single", points: 1,
     text: "Quel plat traditionnel de Marie-Galante est préparé notamment avec des tripes de bœuf, des bananes vertes, du fruit à pain et des petits dombrés ?",
     options: ["Le bébélé", "Le chaudage", "Le blaff de poisson", "La fricassée de lambis"],
     correct: [0],
-    explanation: "Le bébélé est le plat typique et traditionnel de Marie-Galante par excellence."
+    explanation: "Le bébélé est le plat typique et traditionnel de Marie-Galante par excellence.",
+    explanationImage: "/bebele.jpg"
   },
   {
     id: 13, theme: "GASTRONOMIE LOCALE", type: "single", points: 1,
     text: "Dans la préparation traditionnelle de la kassav, qu'est-ce qu'une platine ?",
-    options: [
-      "Une plaque métallique chaude sur laquelle on cuit la galette de manioc",
-      "Une presse utilisée pour extraire le jus de canne",
-      "Un moulin servant à broyer les grains de café",
-      "Un four traditionnel destiné à cuire les viandes"
-    ],
+    options: ["Une plaque métallique chaude sur laquelle on cuit la galette de manioc", "Une presse utilisée pour extraire le jus de canne", "Un moulin servant à broyer les grains de café", "Un four traditionnel destiné à cuire les viandes"],
     correct: [0],
     explanation: "La platine est une plaque métallique chaude sur laquelle on cuit la galette de manioc après en avoir extrait le jus toxique.",
     hasPhoto: true,
@@ -199,46 +175,31 @@ const QUESTIONS = [
     correct: [2],
     explanation: "Cinq espèces de tortues marines sont recensées : la tortue luth, verte, imbriquée, caouanne et olivâtre. Trois viennent régulièrement pondre sur les plages.",
     hasPhoto: true,
-    image: "/Tortue.jpg"
+    image: "/tortue.jpg"
   },
   {
     id: 15, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
     text: "Comment appelle-t-on le palétuvier qui possède des racines en échasses ?",
-    options: [
-      "Le palétuvier rouge (Rhizophora mangle)",
-      "Le palétuvier noir (Avicennia germinans)",
-      "Le palétuvier gris (Conocarpus erectus)",
-      "Le palétuvier blanc (Laguncularia racemosa)"
-    ],
+    options: ["Le palétuvier rouge (Rhizophora mangle)", "Le palétuvier noir (Avicennia germinans)", "Le palétuvier gris (Conocarpus erectus)", "Le palétuvier blanc (Laguncularia racemosa)"],
     correct: [0],
     explanation: "Le palétuvier rouge est reconnaissable à ses racines aériennes en forme d'échasses, qui lui permettent de s'ancrer dans les sols vaseux.",
     hasPhoto: true,
-    image: "/Palétuvier rouge.jpg"
+    image: "/palétuvierrouge.jpg"
   },
   {
     id: 16, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 2,
     text: "Quel est le nom de cette espèce ?",
     imagePlaceholder: "Un lézard vert émeraude aux nuances bleutées sur le tronc d'un arbre.",
-    options: [
-      "Anolis marbré (Ctenonotus marmoratus)",
-      "Hémidactyle mabouia (Hemidactylus mabouia)",
-      "Anolis ferreus (Ctenonotus ferreus)",
-      "Anolis de la Sagra (Norops sagrei)"
-    ],
+    options: ["Anolis marbré (Ctenonotus marmoratus)", "Hémidactyle mabouia (Hemidactylus mabouia)", "Anolis ferreus (Ctenonotus ferreus)", "Anolis de la Sagra (Norops sagrei)"],
     correct: [2],
     explanation: "Il s'agit de l'Anolis ferreus, une espèce endémique magnifique de Marie-Galante.",
     hasPhoto: true,
-    image: "/anolis ferreus.jpg"
+    image: "/anolisferreus.jpg"
   },
   {
     id: 17, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
     text: "Dans le cadre du projet de restauration écologique du marais de la rivière de Vieux-Fort, comment le cocotier (Cocos nucifera) est-il considéré sur le site ?",
-    options: [
-      "Comme une espèce indigène de la mangrove",
-      "Comme une espèce strictement endémique de Guadeloupe",
-      "Comme une espèce exotique envahissante",
-      "Comme une espèce de palétuvier naturellement présente"
-    ],
+    options: ["Comme une espèce indigène de la mangrove", "Comme une espèce strictement endémique de Guadeloupe", "Comme une espèce exotique envahissante", "Comme une espèce de palétuvier naturellement présente"],
     correct: [2],
     explanation: "Le projet mentionne le cocotier parmi les espèces exotiques envahissantes présentes sur le site étudié.",
     hasPhoto: true,
@@ -249,10 +210,10 @@ const QUESTIONS = [
     text: "Où se trouve cette mangrove à Marie-Galante ?",
     imagePlaceholder: "Une mangrove paisible avec une promenade en bois traversant l'eau et une petite barque.",
     options: ["Au marais de Vieux-Fort", "Au marais de Folle-Anse", "Au marais de Petite-Anse", "Au marais de Port-Louis"],
-    correct: [1],
+    correct: [0],
     explanation: "Il s'agit du marais de Vieux-Fort.",
     hasPhoto: true,
-    image: "/Marais de Vieux-Fort.jpg"
+    image: "/maraisdevieuxfort.jpg"
   },
   {
     id: 19, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 1,
@@ -261,21 +222,16 @@ const QUESTIONS = [
     correct: [0],
     explanation: "Écolambda participe activement à la protection des tortues marines à Marie-Galante, notamment par la surveillance des pontes.",
     hasPhoto: true,
-    image: "/Protection des tortues marines.jpg"
+    image: "/protectiontortuesmarines.jpg"
   },
   {
     id: 20, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "multiple", points: 2,
     text: "Quels sont les rôles des mares à Marie-Galante ? (Plusieurs réponses possibles)",
-    options: [
-      "Elles sont des lieux de passage et d'abreuvement pour divers animaux.",
-      "Elles sont utilisées pour répondre à certains besoins agricoles (abreuvement bétail).",
-      "Elles n'ont aucun rôle écologique et ne servent pas d'habitat.",
-      "Elles peuvent retenir une partie des eaux pluviales et limiter les inondations."
-    ],
+    options: ["Elles sont des lieux de passage et d'abreuvement pour divers animaux.", "Elles sont utilisées pour répondre à certains besoins agricoles (abreuvement bétail).", "Elles n'ont aucun rôle écologique et ne servent pas d'habitat.", "Elles peuvent retenir une partie des eaux pluviales et limiter les inondations."],
     correct: [0, 1, 3],
     explanation: "Les mares constituent des habitats pour la biodiversité, fournissent de l'eau pour l'agriculture et participent à la régulation des eaux pluviales.",
     hasPhoto: true,
-    image: "/Mare.jpg"
+    image: "/mare.jpg"
   },
   {
     id: 21, theme: "BIODIVERSITÉ ET ENVIRONNEMENT", type: "single", points: 2,
@@ -285,7 +241,7 @@ const QUESTIONS = [
     correct: [3],
     explanation: "Il s'agit de la magnifique plage de l'Anse de Mays.",
     hasPhoto: true,
-    image: "/Anse de Mays.jpg"
+    image: "/ansedeMays.jpg"
   }
 ];
 
@@ -328,6 +284,7 @@ export default function App() {
   const [score, setScore] = useState(0);
   
   const [bonusData, setBonusData] = useState({ b1: '', b2: '', b3: '' });
+  const [showBonusResults, setShowBonusResults] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   // --- Admin State ---
@@ -453,6 +410,7 @@ export default function App() {
     }
     setIsSaving(true);
     try {
+      // 1. Enregistrement dans la base de données (Firebase)
       const participantsRef = collection(db, 'artifacts', appId, 'public', 'data', 'participants');
       await addDoc(participantsRef, {
         userId: user.uid,
@@ -462,8 +420,25 @@ export default function App() {
         bonusAnswers: bonusData,
         timestamp: serverTimestamp()
       });
+
+      // 2. Envoi de l'e-mail de remerciement via EmailJS
+      await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: "service_ddchv9z",
+          template_id: "template_nxhi40f",
+          user_id: "neuO8Aex4xZ8rLoXg",
+          template_params: {
+            to_email: participant.email,         // L'e-mail du joueur
+            to_name: participant.firstName,      // Le prénom du joueur
+            score: score                         // Son score final
+          }
+        })
+      });
+
     } catch (err) {
-      console.error("Error saving data:", err);
+      console.error("Erreur lors de la sauvegarde ou de l'envoi d'e-mail:", err);
     } finally {
       setIsSaving(false);
       setStep('result');
@@ -531,7 +506,7 @@ export default function App() {
     });
 
   // --- Views ---
-  const renderRegistration = () => {
+  const renderRegistration = () => (
     <div className="max-w-md mx-auto bg-white/95 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-2xl border-t-4 border-emerald-500 relative animate-fade-in">
       <div className="text-center mb-10">
         <Map className="w-20 h-20 mx-auto text-emerald-600 mb-6 animate-float" />
@@ -576,7 +551,7 @@ export default function App() {
         <Lock size={18} />
       </button>
     </div>
-  };
+  );
 
   const renderAdminLogin = () => (
     <div className="max-w-md mx-auto bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-xl border-t-4 border-slate-800">
@@ -628,7 +603,13 @@ export default function App() {
         <div className="space-y-3">
           {participantsList.length === 0 ? (
             <p className="text-slate-500 text-center py-8 text-lg">Aucun participant enregistré pour le moment.</p>
-          ) : null}
+            ) : (
+              participantsList.map((participant, index) => (
+                <div key={index} className="bg-slate-100 p-3 rounded-md">
+                  <p>Participant : {participant.nom}</p>
+                </div>
+              ))
+            )}
           
           {/* Tri automatique par score décroissant */}
           {[...participantsList].sort((a,b) => b.score - a.score).map((p, idx) => (
@@ -687,7 +668,7 @@ export default function App() {
         {isMultiple && <p className="text-sm text-amber-600 font-bold mb-5 flex items-center gap-1 bg-amber-50 inline-block px-3 py-1 rounded-lg"><Sparkles size={16}/> Plusieurs réponses possibles</p>}
 
         {q.hasPhoto && (
-  <div className="w-full h-48 bg-slate-100 rounded-xl mb-6 overflow-hidden border-2 border-slate-200 flex items-center justify-center shadow-inner">
+  <div className="max-w-48 mx-auto h-48 bg-slate-100 rounded-xl mb-6 overflow-hidden border-2 border-slate-200 flex items-center justify-center shadow-inner">
     {q.image ? (
       <img 
         src={q.image} 
@@ -730,61 +711,114 @@ export default function App() {
               </button>
             );
           })}
-        </div>
+        </div> 
 
         {showExplanation && (
           <div className="mt-6 p-5 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl text-amber-900 shadow-inner animate-fade-in">
-            <h4 className="font-extrabold flex items-center gap-2 mb-2 text-amber-800"><AlertCircle size={20} className="text-amber-600"/> Explication</h4>
+            <h4 className="font-extrabold flex items-center gap-2 mb-2 text-amber-800">
+              <AlertCircle size={20} className="text-amber-600"/> Explication
+            </h4>
             <p className="text-base leading-relaxed font-medium">{q.explanation}</p>
+            
+            {/* LIGNE DE CODE POUR L'IMAGE D'EXPLICATION */}
+        {q.explanationImage && (
+          <div className="mt-4 rounded-xl overflow-hidden border-2 border-amber-200 shadow-sm">
+            <img 
+              src={q.explanationImage} 
+              alt="Illustration explicative" 
+              className="w-full h-auto max-h-64 object-cover"
+            />
           </div>
         )}
-
-        <div className="mt-8 flex justify-end">
-          {!showExplanation ? (
-            <button onClick={handleValidateAnswer} disabled={selectedOptions.length === 0} className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-              Valider
-            </button>
-          ) : (
-            <button onClick={handleNextQuestion} className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-3 animate-pulse">
-              Continuer <ChevronRight size={24} />
-            </button>
-          )}
-        </div>
       </div>
-    );
-  };
+    )}
 
-  const renderBonus = () => (
-    <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-2xl border-t-4 border-amber-500 animate-fade-in">
-      <div className="flex items-center gap-3 mb-4">
-        <Star className="text-amber-500" size={32} />
-        <h2 className="text-3xl font-extrabold text-slate-800">Questions Bonus</h2>
-      </div>
-      <p className="text-slate-600 mb-8 text-lg font-medium">Ces questions serviront à départager les éventuels ex-æquo pour le tirage au sort des lots.</p>
-      
-      <div className="space-y-8">
-        <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
-          <label className="block text-base font-bold text-slate-800 mb-3">1. Quel est le nom du moulin à vent emblématique que l'on peut visiter à Marie-Galante ?</label>
-          <input type="text" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 outline-none transition-all text-lg bg-white"
-            value={bonusData.b1} onChange={e => setBonusData({...bonusData, b1: e.target.value})} placeholder="Votre réponse..." />
-        </div>
-        <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
-          <label className="block text-base font-bold text-slate-800 mb-3">2. Quel est le point culminant de Marie-Galante et quelle est son altitude approximative ?</label>
-          <input type="text" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 outline-none transition-all text-lg bg-white"
-            value={bonusData.b2} onChange={e => setBonusData({...bonusData, b2: e.target.value})} placeholder="Ex: Morne... XXXm" />
-        </div>
-        <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
-          <label className="block text-base font-bold text-slate-800 mb-3">3. À votre avis, quelle est la superficie de Marie-Galante, en kilomètres carrés (km²) ?</label>
-          <input type="number" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 outline-none transition-all text-lg bg-white"
-            value={bonusData.b3} onChange={e => setBonusData({...bonusData, b3: e.target.value})} placeholder="Saisissez un nombre..." />
-        </div>
-      </div>
-
-      <button onClick={submitFinalResults} disabled={isSaving} className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-extrabold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-10 text-lg">
-        {isSaving ? 'Enregistrement en cours...' : 'Terminer le concours'}
-      </button>
+    {/* --- BOUTONS VALIDER / CONTINUER (Restaurés) --- */}
+    <div className="mt-8 flex justify-end">
+      {!showExplanation ? (
+        <button onClick={handleValidateAnswer} disabled={selectedOptions.length === 0} className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          Valider
+        </button>
+      ) : (
+        <button onClick={handleNextQuestion} className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-3 animate-pulse">
+          Continuer <ChevronRight size={24} />
+        </button>
+      )}
     </div>
+  </div>
   );
+};
+
+const handleValidateBonus = () => {
+  let earned = 0;
+  // On met les réponses en minuscules pour faciliter la vérification
+  const b1 = (bonusData.b1 || "").toLowerCase();
+  const b2 = (bonusData.b2 || "").toLowerCase();
+  const b3 = String(bonusData.b3 || "").trim();
+
+  // Vérification par mots-clés
+  if (b1.includes('bezard') || b1.includes('bézard')) earned += 2;
+  if (b2.includes('constant') || b2.includes('204')) earned += 2;
+  if (b3 === '158') earned += 2;
+
+  setScore(prev => prev + earned);
+  setShowBonusResults(true);
+};
+
+const renderBonus = () => (
+  <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-2xl border-t-4 border-amber-500 animate-fade-in">
+    <div className="flex items-center gap-3 mb-4">
+      <Star className="text-amber-500" size={32} />
+      <h2 className="text-3xl font-extrabold text-slate-800">Questions Bonus</h2>
+    </div>
+    <p className="text-slate-600 mb-8 text-lg font-medium">Ces questions serviront à départager les éventuels ex-æquo pour le tirage au sort des lots.</p>
+    
+    <div className="space-y-8">
+      <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
+        <label className="block text-base font-bold text-slate-800 mb-3">1. Quel est le nom du moulin à vent emblématique que l'on peut visiter à Marie-Galante ?</label>
+        <input type="text" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 outline-none transition-all text-lg bg-white"
+          value={bonusData.b1} onChange={e => setBonusData({...bonusData, b1: e.target.value})} placeholder="Votre réponse..." disabled={showBonusResults} />
+        {showBonusResults && (
+          <div className="mt-3 p-3 bg-emerald-100 text-emerald-800 rounded-xl font-medium flex items-center gap-2 animate-fade-in">
+            <CheckCircle2 size={20} /> Bonne réponse : Le Moulin de Bézard (+2 pts)
+          </div>
+        )}
+      </div>
+      
+      <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
+        <label className="block text-base font-bold text-slate-800 mb-3">2. Quel est le point culminant de Marie-Galante et quelle est son altitude approximative ?</label>
+        <input type="text" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 outline-none transition-all text-lg bg-white"
+          value={bonusData.b2} onChange={e => setBonusData({...bonusData, b2: e.target.value})} placeholder="Ex: Morne... XXXm" disabled={showBonusResults} />
+        {showBonusResults && (
+          <div className="mt-3 p-3 bg-emerald-100 text-emerald-800 rounded-xl font-medium flex items-center gap-2 animate-fade-in">
+            <CheckCircle2 size={20} /> Bonne réponse : Le Morne Constant, 204 mètres (+2 pts)
+          </div>
+        )}
+      </div>
+      
+      <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
+        <label className="block text-base font-bold text-slate-800 mb-3">3. À votre avis, quelle est la superficie de Marie-Galante, en kilomètres carrés (km²) ?</label>
+        <input type="number" className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 outline-none transition-all text-lg bg-white"
+          value={bonusData.b3} onChange={e => setBonusData({...bonusData, b3: e.target.value})} placeholder="Saisissez un nombre..." disabled={showBonusResults} />
+        {showBonusResults && (
+          <div className="mt-3 p-3 bg-emerald-100 text-emerald-800 rounded-xl font-medium flex items-center gap-2 animate-fade-in">
+            <CheckCircle2 size={20} /> Bonne réponse : 158 km² (+2 pts)
+          </div>
+        )}
+      </div>
+    </div>
+
+    {!showBonusResults ? (
+      <button onClick={handleValidateBonus} className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-extrabold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-10 text-lg">
+        Valider les réponses bonus
+      </button>
+    ) : (
+      <button onClick={submitFinalResults} disabled={isSaving} className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-extrabold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-10 text-lg flex items-center justify-center gap-2">
+        {isSaving ? 'Enregistrement en cours...' : 'Terminer le concours'} <ChevronRight size={24}/>
+      </button>
+    )}
+  </div>
+);
 
   const renderResult = () => (
     <div className="max-w-lg mx-auto bg-white/95 backdrop-blur-md p-10 rounded-3xl shadow-2xl text-center border-t-4 border-emerald-500 animate-fade-in relative overflow-hidden">
@@ -853,16 +887,9 @@ export default function App() {
       />
       <div className="fixed inset-0 z-[-1] bg-slate-900/60 backdrop-blur-[2px]" />
 
-      {/* Abstract Background Elements */}
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-1] opacity-30">
-        <Leaf className="absolute top-10 left-10 text-emerald-300 w-32 h-32 transform -rotate-45" />
-        <Droplets className="absolute bottom-20 right-10 text-cyan-300 w-40 h-40" />
-        <Wind className="absolute top-40 right-20 text-sky-200 w-24 h-24" />
-      </div>
-
+          {/* INSERT LOGO HERE */}
       <header className="max-w-4xl mx-auto text-center mb-10">
-        {/*AJOUT DU LOGO ICI*/}
-        <img src="/Logo OTMG sans fond.jpg" alt="Logo Office du Tourisme" className="w-48 mx-auto drop-shadow-lg mb-4" />
+        <img src="/Logootmgsansfond.jpg" alt="Logo Office du Tourisme de Marie-Galante" className="w-48 mx-auto drop-shadow-lg mb-4" />
         <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-md">
           L'île aux cent moulins
         </h1>
