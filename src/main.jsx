@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query } from 'firebase/firestore';
-import { Leaf, Droplets, Map, Sun, Wind, ChevronRight, CheckCircle2, AlertCircle, Camera, Lock, Download, Users, ArrowUpDown, Trophy, Star, Sparkles } from 'lucide-react';
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+import { Leaf, Droplets, Map, Sun, Wind, ChevronRight, CheckCircle2, AlertCircle, Camera, Lock, Download, Users, ArrowUpDown, Trophy, Star, Sparkles, Trash2 } from 'lucide-react';
+import { initializeApp } from 'firebase/app';
 
 // --- Custom Styles for Animations ---
 const customStyles = `
@@ -34,11 +35,19 @@ const customStyles = `
 `;
 
 // --- Firebase Initialization ---
-const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-const app = Object.keys(firebaseConfig).length > 0 ? initializeApp(firebaseConfig) : null;
-const auth = app ? getAuth(app) : null;
-const db = app ? getFirestore(app) : null;
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'marie-galante-quiz';
+const firebaseConfig = {
+  apiKey: "AIzaSyAvlQW1oZUARyb7qYoaO2oKHv_k2pmFtzA",
+  authDomain: "jeu-concours-otmg.firebaseapp.com",
+  projectId: "jeu-concours-otmg",
+  storageBucket: "jeu-concours-otmg.firebasestorage.app",
+  messagingSenderId: "572332298327",
+  appId: "1:572332298327:web:10515ffddd6e7829391312"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const appId = 'marie-galante-quiz';
 
 // --- Dynamic Backgrounds ---
 const THEME_BACKGROUNDS = {
@@ -282,6 +291,7 @@ export default function App() {
   const [showExplanation, setShowExplanation] = useState(false);
   
   const [score, setScore] = useState(0);
+  const [bonusScore, setBonusScore] = useState(0);
   
   const [bonusData, setBonusData] = useState({ b1: '', b2: '', b3: '' });
   const [showBonusResults, setShowBonusResults] = useState(false);
@@ -292,15 +302,18 @@ export default function App() {
   const [participantsList, setParticipantsList] = useState([]);
   const [filterLevel, setFilterLevel] = useState('all');
   const [sortOrder, setSortOrder] = useState('desc'); // 'desc' ou 'asc'
-  const handleExportCSV = () => {
-    const headers = ["Nom", "Prénom", "Email", "Téléphone", "Score", "Bonus 1", "Bonus 2", "Bonus 3"];
+  
+  const headers = ["Nom", "Prénom", "Email", "Téléphone", "Score Quiz", "Score Bonus", "Score Total", "Bonus 1", "Bonus 2", "Bonus 3"];
     
+  const handleExportCSV = () => {
     const rows = participantsList.map(p => [
       p.lastName, 
       p.firstName, 
       p.email, 
       p.phone || "Non renseigné", 
       p.score, 
+      p.bonusScore || 0,
+      p.totalScore || p.score,
       p.bonusData?.b1 || "", 
       p.bonusData?.b2 || "", 
       p.bonusData?.b3 || ""
@@ -415,8 +428,10 @@ export default function App() {
       await addDoc(participantsRef, {
         userId: user.uid,
         ...participant,
-        score: score,
-        rank: getRank(score),
+        score: score, // Les points du quiz sur 29
+        bonusScore: bonusScore, // Les points bonus (max 6)
+        totalScore: score + bonusScore, // Le total cumulé
+        rank: getRank(score + bonusScore),
         bonusAnswers: bonusData,
         timestamp: serverTimestamp()
       });
@@ -583,60 +598,98 @@ export default function App() {
     </div>
   );
 
+  const handleDeleteAllParticipants = async () => {
+    if (window.confirm("⚠️ Êtes-vous sûr de vouloir supprimer TOUS les participants ? Cette action est définitive et irréversible.")) {
+      try {
+        // Cibler la collection des participants
+        const participantsRef = collection(db, 'artifacts', appId, 'public', 'data', 'participants');
+        const querySnapshot = await getDocs(query(participantsRef));
+        
+        // Supprimer chaque document un par un
+        const deletePromises = querySnapshot.docs.map(document => 
+          deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'participants', document.id))
+        );
+        
+        await Promise.all(deletePromises);
+        
+        alert("Tous les participants ont été supprimés avec succès.");
+        // Note : La liste à l'écran se mettra à jour toute seule grâce au onSnapshot déjà présent dans votre code.
+      } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
+        alert("Une erreur est survenue lors de la suppression.");
+      }
+    }
+  };
+
   const renderAdminDashboard = () => {
     return (
       <div className="animate-fade-in max-h-[80vh] overflow-y-auto w-full max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-xl relative z-10">
         <div className="flex justify-between items-center mb-6 border-b pb-4">
           <h2 className="text-2xl font-bold text-emerald-900 flex items-center">
             <Users className="mr-2" /> Participants ({participantsList.length})
+            <span className="ml-3 text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full animate-pulse">En direct</span>
           </h2>
           <div className="flex gap-2">
             <button onClick={handleExportCSV} className="text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded font-bold flex items-center shadow transition-colors">
               <Download className="w-4 h-4 mr-2" /> Exporter CSV
             </button>
+            
+            {/* BOUTON SUPPRIMER RÉINTÉGRÉ ICI */}
+            <button onClick={handleDeleteAllParticipants} className="text-sm bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-bold flex items-center shadow transition-colors">
+              <Trash2 className="w-4 h-4 mr-2" /> Tout effacer
+            </button>
+            
             <button onClick={() => setStep('registration')} className="text-sm bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded text-slate-800 font-bold transition-colors">
               Quitter
             </button>
           </div>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-4">
           {participantsList.length === 0 ? (
-            <p className="text-slate-500 text-center py-8 text-lg">Aucun participant enregistré pour le moment.</p>
-            ) : (
-              participantsList.map((participant, index) => (
-                <div key={index} className="bg-slate-100 p-3 rounded-md">
-                  <p>Participant : {participant.nom}</p>
-                </div>
-              ))
-            )}
-          
-          {/* Tri automatique par score décroissant */}
-          {[...participantsList].sort((a,b) => b.score - a.score).map((p, idx) => (
-            <div key={idx} className="p-4 bg-slate-50 border border-slate-200 rounded-lg flex flex-col md:flex-row justify-between md:items-center gap-4 hover:shadow-md transition-shadow">
-              <div>
-                <p className="font-bold text-lg text-slate-800">{p.lastName?.toUpperCase()} {p.firstName}</p>
-                <p className="text-sm text-slate-600">
-                  {p.email} {p.phone ? `• Tél: ${p.phone}` : ''}
-                </p>
-                
-                {/* Affichage des réponses bonus pour le tirage */}
-                <div className="mt-2 text-xs text-slate-500 bg-white p-2 rounded border">
-                  <span className="font-semibold text-emerald-800">Bonus 1:</span> {p.bonusData?.b1 || "-"} | 
-                  <span className="font-semibold text-emerald-800 ml-2">Bonus 2:</span> {p.bonusData?.b2 || "-"} | 
-                  <span className="font-semibold text-emerald-800 ml-2">Bonus 3:</span> {p.bonusData?.b3 || "-"}
-                </div>
-              </div>
-              <div className="text-right flex-shrink-0">
-                <p className="font-black text-2xl text-emerald-600">{p.score} <span className="text-sm text-slate-500 font-normal">pts</span></p>
-                {idx === 0 && <span className="text-xs font-bold text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full uppercase">1er Actuel</span>}
-              </div>
-            </div>
-          ))}
+            <p className="text-slate-500 text-center py-8 text-lg">Aucun participant enregistré pour le moment. En attente de joueurs...</p>
+          ) : (
+            [...participantsList]
+              .sort((a, b) => (b.totalScore || b.score || 0) - (a.totalScore || a.score || 0))
+              .map((p, idx) => {
+                const bonus = p.bonusAnswers || p.bonusData || {};
+                return (
+                  <div key={idx} className="p-5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col md:flex-row justify-between md:items-center gap-4 hover:shadow-md transition-shadow relative overflow-hidden">
+                    {idx === 0 && <div className="absolute top-0 left-0 w-1 h-full bg-yellow-400"></div>}
+                    
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3">
+                        <p className="font-bold text-xl text-slate-800">
+                          {(p.lastName || "").toUpperCase()} {p.firstName || ""}
+                        </p>
+                        {idx === 0 && <span className="text-xs font-bold text-yellow-700 bg-yellow-100 px-2 py-1 rounded-full uppercase flex items-center"><Trophy size={12} className="mr-1"/> 1er</span>}
+                      </div>
+                      <p className="text-sm text-slate-600 mb-2">
+                        {p.email} {p.phone ? `• Tél: ${p.phone}` : ''}
+                      </p>
+                      
+                      <div className="text-xs text-slate-500 bg-white inline-flex gap-4 p-2 rounded-lg border border-slate-200">
+                        <span><strong className="text-slate-700">Rép. Bonus 1:</strong> {bonus.b1 || "-"}</span>
+                        <span className="border-l pl-4 border-slate-200"><strong className="text-slate-700">Rép. Bonus 2:</strong> {bonus.b2 || "-"}</span>
+                        <span className="border-l pl-4 border-slate-200"><strong className="text-slate-700">Rép. Bonus 3:</strong> {bonus.b3 || "-"}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="text-right flex-shrink-0 bg-white p-3 rounded-xl border border-slate-200 shadow-sm min-w-[180px]">
+                      <p className="font-black text-3xl text-emerald-600 mb-1">{p.totalScore || p.score || 0} <span className="text-sm text-slate-500 font-normal">pts Total</span></p>
+                      <div className="flex justify-between text-sm font-bold border-t border-slate-100 pt-2 mt-1">
+                        <span className="text-slate-600">Quiz: <span className="text-blue-600">{p.score || 0}</span></span>
+                        <span className="text-slate-600">Bonus: <span className="text-amber-500">{p.bonusScore || 0}</span></span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+          )}
         </div>
       </div>
     );
-  };
+};
 
   const renderQuiz = () => {
     const q = QUESTIONS[currentQuestionIndex];
@@ -721,15 +774,15 @@ export default function App() {
             <p className="text-base leading-relaxed font-medium">{q.explanation}</p>
             
             {/* LIGNE DE CODE POUR L'IMAGE D'EXPLICATION */}
-        {q.explanationImage && (
-          <div className="mt-4 rounded-xl overflow-hidden border-2 border-amber-200 shadow-sm">
-            <img 
-              src={q.explanationImage} 
-              alt="Illustration explicative" 
-              className="w-full h-auto max-h-64 object-cover"
-            />
-          </div>
-        )}
+            {q.explanationImage && (
+              <div className="mt-4 max-w-xs mx-auto rounded-xl overflow-hidden border-2 border-amber-200 shadow-sm">
+                <img 
+                  src={q.explanationImage} 
+                  alt="Illustration explicative" 
+                  className="w-full h-auto max-h-48 object-cover"
+                />
+              </div>
+            )}
       </div>
     )}
 
@@ -746,22 +799,36 @@ export default function App() {
       )}
     </div>
   </div>
-  );
-};
+   );
+  };
 
 const handleValidateBonus = () => {
   let earned = 0;
-  // On met les réponses en minuscules pour faciliter la vérification
+  
+  // On met les textes en minuscules pour éviter les erreurs liées aux majuscules
   const b1 = (bonusData.b1 || "").toLowerCase();
   const b2 = (bonusData.b2 || "").toLowerCase();
-  const b3 = String(bonusData.b3 || "").trim();
+  
+  // On transforme la réponse 3 en nombre entier pour pouvoir calculer la fourchette
+  const b3 = parseInt(bonusData.b3 || "0", 10);
 
-  // Vérification par mots-clés
-  if (b1.includes('bezard') || b1.includes('bézard')) earned += 2;
-  if (b2.includes('constant') || b2.includes('204')) earned += 2;
-  if (b3 === '158') earned += 2;
+  // Condition Bonus 1 : Contient "bézard" (avec ou sans accent) -> 2 pts
+  if (b1.includes('bézard') || b1.includes('bezard')) {
+    earned += 2;
+  }
 
-  setScore(prev => prev + earned);
+  // Condition Bonus 2 : Contient "constant" ET "204" -> 2 pts
+  if (b2.includes('constant') && b2.includes('204')) {
+    earned += 2;
+  }
+
+  // Condition Bonus 3 : Compris entre 155 et 160 inclus -> 2 pts
+  if (b3 >= 155 && b3 <= 160) {
+    earned += 2;
+  }
+
+  // On enregistre uniquement les points gagnés (0, 2, 4 ou 6) dans le score bonus
+  setBonusScore(earned);
   setShowBonusResults(true);
 };
 
@@ -846,10 +913,42 @@ const renderBonus = () => (
   const [fadeSplash, setFadeSplash] = useState(false);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setFadeSplash(true), 5000);
-    const removeTimer = setTimeout(() => setShowSplash(false), 5000);
-    return () => { clearTimeout(fadeTimer); clearTimeout(removeTimer); };
+    // Déclenche le fondu (fade out) après 2.5 secondes
+    const fadeTimer = setTimeout(() => {
+      setFadeSplash(true);
+    }, 2500);
+
+    // Supprime complètement l'élément du DOM après 3.5 secondes
+    const removeTimer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3500);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
   }, []);
+
+  useEffect(() => {
+    // Si la base de données n'est pas encore connectée, on attend
+    if (!db) return;
+
+    const participantsRef = collection(db, 'artifacts', appId, 'public', 'data', 'participants');
+    
+    // onSnapshot télécharge les données et écoute chaque nouvelle modification en direct
+    const unsubscribe = onSnapshot(participantsRef, (snapshot) => {
+      const liveParticipants = snapshot.docs.map(doc => ({
+        id: doc.id, // On garde l'ID Firebase pour pouvoir supprimer si besoin
+        ...doc.data()
+      }));
+      setParticipantsList(liveParticipants);
+    }, (error) => {
+      console.error("Erreur de synchronisation en temps réel :", error);
+    });
+
+    // Nettoyage de l'écouteur quand on quitte l'application
+    return () => unsubscribe();
+  }, [db]); // Se déclenche une fois la connexion Firebase établie
   
   const currentTheme = step === 'quiz' ? QUESTIONS[currentQuestionIndex].theme : 'DEFAULT';
   const bgImage = THEME_BACKGROUNDS[currentTheme] || THEME_BACKGROUNDS['DEFAULT'];
@@ -862,7 +961,7 @@ const renderBonus = () => (
         className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-emerald-900 transition-opacity duration-1000 ease-in-out ${fadeSplash ? 'opacity-0' : 'opacity-100'}`}
       >
         <img 
-          src="/MG melting pot.png" 
+          src="/MG melting pot.png"
           alt="Accueil Marie-Galante" 
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
@@ -907,5 +1006,6 @@ const renderBonus = () => (
     </>
   );
 }
+
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
