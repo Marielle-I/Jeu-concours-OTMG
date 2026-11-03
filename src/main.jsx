@@ -448,7 +448,8 @@ export default function App() {
           template_params: {
             to_email: participant.email,         // L'e-mail du joueur
             to_name: participant.firstName,      // Le prénom du joueur
-            score: score + bonusScore,        // Le calcul du total des points
+            score: score + (typeof bonusScore !== 'undefined' ? bonusScore : 0),
+            niveau: getRank(score + (typeof bonusScore !== 'undefined' ? bonusScore : 0)), // Ajout de la variable niveau
             event_name: "Passeport Marie-Galante"
           }
         })
