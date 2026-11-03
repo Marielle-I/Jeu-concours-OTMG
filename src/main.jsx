@@ -436,6 +436,7 @@ export default function App() {
         timestamp: serverTimestamp()
       });
 
+      try {
       // 2. Envoi de l'e-mail de remerciement via EmailJS
       await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
@@ -447,10 +448,15 @@ export default function App() {
           template_params: {
             to_email: participant.email,         // L'e-mail du joueur
             to_name: participant.firstName,      // Le prénom du joueur
-            score: score                         // Son score final
+            score: score + bonusScore,        // Le calcul du total des points
+            event_name: "Passeport Marie-Galante"
           }
         })
       });
+      console.log("Mail de remerciement envoyé avec succès !");
+    } catch (error) {
+      console.error("Erreur silencieuse lors de l'envoi du mail :", error);
+    }
 
     } catch (err) {
       console.error("Erreur lors de la sauvegarde ou de l'envoi d'e-mail:", err);
