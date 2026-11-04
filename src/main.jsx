@@ -297,6 +297,28 @@ export default function App() {
   const [showBonusResults, setShowBonusResults] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
+  const [timeLeft, setTimeLeft] = useState(30); // Chrono de 30s par question
+  const [totalTime, setTotalTime] = useState(0); // Cumul du temps passé
+
+  useEffect(() => {
+    // Si on n'est pas sur la page des questions, le minuteur s'arrête
+    if (step !== 'quiz') return; 
+
+    // Si le temps est écoulé, on déclenche automatiquement le passage à la suite
+    if (timeLeft <= 0) {
+      handleNextQuestion(); 
+      return;
+    }
+
+    // On retire 1 seconde toutes les 1000 millisecondes
+    const timer = setInterval(() => {
+      setTimeLeft(prev => prev - 1);
+    }, 1000);
+
+    // Nettoyage pour éviter les bugs si on quitte la page
+    return () => clearInterval(timer);
+  }, [timeLeft, step, currentQuestionIndex]);
+
   // --- Admin State ---
   const [adminPassword, setAdminPassword] = useState('');
   const [participantsList, setParticipantsList] = useState([]);
@@ -398,6 +420,13 @@ export default function App() {
   };
 
   const handleNextQuestion = () => {
+    // 1. On calcule le temps passé sur cette question et on l'ajoute au total
+    const timeSpent = 30 - timeLeft;
+    setTotalTime(prev => prev + timeSpent);
+    
+    // 2. On remet le chrono à 30 secondes pour la prochaine question
+    setTimeLeft(30);
+
     setShowExplanation(false);
     setSelectedOptions([]);
     
@@ -431,6 +460,7 @@ export default function App() {
         score: score, // Les points du quiz sur 29
         bonusScore: bonusScore, // Les points bonus (max 6)
         totalScore: score + bonusScore, // Le total cumulé
+        totalTime: totalTime,
         rank: getRank(score + bonusScore),
         bonusAnswers: bonusData,
         timestamp: serverTimestamp()
@@ -657,7 +687,18 @@ export default function App() {
             <p className="text-slate-500 text-center py-8 text-lg">Aucun participant enregistré pour le moment. En attente de joueurs...</p>
           ) : (
             [...participantsList]
-              .sort((a, b) => (b.totalScore || b.score || 0) - (a.totalScore || a.score || 0))
+            .sort((a, b) => {
+              const scoreA = a.totalScore || a.score || 0;
+              const scoreB = b.totalScore || b.score || 0;
+              
+              // Si les scores sont différents, on classe par le plus grand score
+              if (scoreB !== scoreA) {
+                return scoreB - scoreA;
+              }
+              
+              // Si les scores sont égaux (ex-aequo), le plus petit temps gagne
+              return (a.totalTime || 999) - (b.totalTime || 999);
+            })
               .map((p, idx) => {
                 const bonus = p.bonusAnswers || p.bonusData || {};
                 return (
