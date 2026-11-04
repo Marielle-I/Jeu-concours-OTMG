@@ -729,8 +729,14 @@ export default function App() {
                         <span className="text-slate-600">Quiz: <span className="text-blue-600">{p.score || 0}</span></span>
                         <span className="text-slate-600">Bonus: <span className="text-amber-500">{p.bonusScore || 0}</span></span>
                       </div>
+
+                      {/* NOUVELLE LIGNE : Affichage du temps total */}
+                      <div className="mt-2 pt-2 border-t border-slate-100 text-xs text-slate-500 flex justify-end items-center gap-1">
+                        <span>⏱️ Temps :</span> 
+                        <span className="font-bold text-slate-700">{p.totalTime ? `${p.totalTime} sec` : "Non mesuré"}</span>
                     </div>
                   </div>
+                </div>
                 );
               })
           )}
@@ -752,6 +758,7 @@ export default function App() {
             <span>Progression</span>
             <span>{currentQuestionIndex + 1} / {QUESTIONS.length}</span>
           </div>
+          <div className="text-xl font-bold text-red-600">{timeLeft}s</div>
           <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden shadow-inner">
             <div 
               className="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full rounded-full transition-all duration-700 ease-out"
