@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, deleteDoc, doc, onSnapshot, where } from 'firebase/firestore';
 import { Leaf, Droplets, Map, Sun, Wind, ChevronRight, CheckCircle2, AlertCircle, Camera, Lock, Download, Users, ArrowUpDown, Trophy, Star, Sparkles, Trash2 } from 'lucide-react';
 import { initializeApp } from 'firebase/app';
 
@@ -373,10 +373,27 @@ export default function App() {
   }, []);
 
   // --- Handlers ---
-  const handleRegistrationSubmit = (e) => {
+  const handleRegistrationSubmit = async (e) => {
     e.preventDefault();
     if (participant.firstName && participant.lastName && participant.email) {
-      setStep('quiz');
+      try {
+        // 1. On cherche si l'e-mail existe déjà dans la base de données
+        const participantsRef = collection(db, 'artifacts', appId, 'public', 'data', 'participants');
+        const emailQuery = query(participantsRef, where("email", "==", participant.email));
+        const querySnapshot = await getDocs(emailQuery);
+
+        // 2. Si on trouve un résultat, on bloque et on affiche un message
+        if (!querySnapshot.empty) {
+          alert("Désolé, cette adresse e-mail a déjà été utilisée pour participer à ce jeu-concours.");
+          return; // Arrête la fonction ici
+        }
+
+        // 3. Si l'e-mail est nouveau, on lance le quiz
+        setStep('quiz');
+      } catch (error) {
+        console.error("Erreur lors de la vérification :", error);
+        alert("Une erreur de connexion est survenue. Veuillez réessayer.");
+      }
     }
   };
 
